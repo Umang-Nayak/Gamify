@@ -48,6 +48,7 @@ class Game(models.Model):
     game_name = models.CharField(max_length=100)
     game_version = models.CharField(max_length=100)
     game_image = models.CharField(max_length=100)
+    game_price = models.IntegerField()
     game_launch_date = models.DateField()
     game_quantity = models.IntegerField()
     game_description = models.CharField(max_length=500)
