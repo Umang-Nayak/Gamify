@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Sign In / Sign Up</title>
+    <link rel="stylesheet" href="{% static 'general_Login_CSS.css' %}" />
+
+</head>
+
+<body>
+
+
+    <div class="container" id="container">
+        <div class="form-container sign-in">
+            <form method="POST" action="/otp_verification/">
+                {% csrf_token %}
+                <h1>Reset Password <i class="fas fa-key"></i></h1>
+                <br>
+                <span align="center">
+                    <b>Check Your Email For OTP</b>
+                        <br>
+                </span>
+                <br>
+                <input id="u_otp" name="u_otp" type="text" placeholder="OTP">
+                <input id="u_new_password" name="u_new_password" type="password" placeholder="NEW PASSWORD">
+                <input id="u_confirm_password" name="u_confirm_password" type="password" placeholder="CONFIRM PASSWORD">
+                {% for data in messages %}
+                    <b><span style="color:red"> {{data}} </span></b>
+                {% endfor %}
+                <br>
+                <button>Reset Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'general_Login_JavaScript.js' %}"></script>
+</body>
+
+</html>
