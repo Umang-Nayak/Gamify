@@ -1,0 +1,30 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">INSERT GAME</h1>
+    </div>
+
+    <br>
+
+    <form method="post" action="/insert_type/">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Type Name</td>
+                <td>
+                    <input type="text" name="type_name" id="type_name">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">SUBMIT</button>
+    </form>
+
+</div>
+
+{% endblock %}

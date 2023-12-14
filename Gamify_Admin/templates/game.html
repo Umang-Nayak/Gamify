@@ -1,0 +1,55 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">GAME</h1>
+        <button class="view">View All</button>
+        <a href="/insert_game/"><button class="view">Insert</button></a>
+    </div>
+
+    <div class="items">
+
+    <div class="report-body">
+        <div class="report-topic-heading">
+            <h3 class="t-op">ID</h3>
+            <h3 class="t-op">Name</h3>
+            <h3 class="t-op">Version</h3>
+            <h3 class="t-op">Image</h3>
+            <h3 class="t-op">Price</h3>
+            <h3 class="t-op">Launch date</h3>
+            <h3 class="t-op">Quantity</h3>
+            <h3 class="t-op">Description</h3>
+            <h3 class="t-op">Availability</h3>
+            <h3 class="t-op">Company Name</h3>
+            <h3 class="t-op">Type Name</h3>
+            <h3 class="t-op">Action</h3>
+        </div>
+
+           {% for g in game %}
+
+            <div class="item1">
+                <h3 class="t-op-nextlvl">{{g.game_id}}</h3>
+                <h3 class="t-op-nextlvl">{{g.game_name}}</h3>
+                <h3 class="t-op-nextlvl">{{g.game_version}}</h3>
+                <h3 class="t-op-nextlvl">{{g.game_image}}</h3>
+                <h3 class="t-op-nextlvl">{{g.game_price}}</h3>
+                <h3 class="t-op-nextlvl">{{g.game_launch_date}}</h3>
+                <h3 class="t-op-nextlvl">{{g.game_quantity}}</h3>
+                <h3 class="t-op-nextlvl">{{g.game_description}}</h3>
+                <h3 class="t-op-nextlvl">{{g.is_available}}</h3>
+                <h3 class="t-op-nextlvl">{{g.company_id.company_name}}</h3>
+                <h3 class="t-op-nextlvl">{{g.type_id.type_name}}</h3>
+                <h3 class="t-op-nextlvl">
+                    <a href="/delete_game/{{g.game_id}}"><i class="fa-solid fa-trash fa-lg"></i></a> /
+                    <a href="/update_game/{{g.game_id}}"><i class="fa-solid fa-arrows-rotate fa-lg"></i></a>
+                </h3>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

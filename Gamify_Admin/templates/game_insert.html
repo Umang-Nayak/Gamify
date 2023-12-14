@@ -1,0 +1,81 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">INSERT GAME</h1>
+    </div>
+
+    <br>
+
+    <form method="post" action="/insert_game/">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Game Name </td>
+                <td>
+                    <input type="text" name="game_name" id="game_name" value="{{g.game_name}}">
+                </td>
+            </tr>
+            <tr>
+                <td>Game Version </td>
+            <td><input type="text" name="game_version" id="game_version"></td>
+            </tr>
+            <tr>
+                <td>Game Image </td>
+                <td><input type="text" name="game_image" id="game_image"></td>
+            </tr>
+            <tr>
+                <td>Game Price </td>
+                <td><input type="number" name="game_price" id="game_price"></td>
+            </tr>
+            <tr>
+                <td>Game Launch Date </td>
+                <td><input type="date" name="game_launch_date" id="game_launch_date"></td>
+            </tr>
+            <tr>
+                <td>Game Quantity </td>
+                <td><input type="number" name="game_quantity" id="game_quantity"></td>
+            </tr>
+            <tr>
+                <td>Game Description </td>
+                <td><input type="text" name="game_description" id="game_description"></td>
+            </tr>
+            <tr>
+                <td>Game Is Available</td>
+                <td>
+                    <input type="radio" name="is_available" value="1">Available
+                    <input type="radio" name="is_available" value="0">Not Available
+                </td>
+            </tr>
+            <tr>
+                <td>Company Name</td>
+                <td>
+                    <select name="company_id" id="company_id">
+                    {% for data in company %}
+                    <option value="{{data.company_id}}">{{data.company_name}}</option>
+                    {% endfor %}
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Type Name</td>
+                <td>
+                    <select name="type_id" id="type_id">
+                    {% for data in type %}
+                    <option value="{{data.type_id}}">{{data.type_name}}</option>
+                    {% endfor %}
+                </select>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">SUBMIT</button>
+    </form>
+
+</div>
+
+{% endblock %}

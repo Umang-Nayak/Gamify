@@ -1,27 +1,50 @@
-"""
-URL configuration for Gamify project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 from Gamify_Admin import views
 
 
 urlpatterns = [
+
+    # Super User Page
     path('admin/', admin.site.urls),
+
+
+    # Registration - Login - Forgot Password
     path('admin_register/', views.register_user),
     path('admin_login/', views.login_user),
-    path('home/', views.main),
+    path('forgot_password/', views.user_forgot_password),
+    path('otp/', views.user_otp),
+    path('forgot_password_verification/', views.sendotp),
+    path('otp_verification/', views.set_password),
+
+
+    # Show Data
+    path('city/', views.show_city),
+    path('user/', views.show_user),
+    path('company/', views.show_company),
+    path('type/', views.show_type),
+    path('game/', views.show_game),
+
+
+    # Delete Data
+    path('delete_city/<int:id>', views.destroy_city),
+    path('delete_user/<int:id>', views.destroy_user),
+    path('delete_company/<int:id>', views.destroy_company),
+    path('delete_type/<int:id>', views.destroy_type),
+    path('delete_game/<int:id>', views.destroy_game),
+
+
+    # Update Data
+    path('update_city/<int:id>', views.change_city),
+    # path('update_user/<int:id>', views.change_user),
+    path('update_company/<int:id>', views.change_company),
+    path('update_type/<int:id>', views.change_type),
+    path('update_game/<int:id>', views.change_game),
+
+
+    # Insert Data
+    path('insert_city/', views.enter_city),
+    path('insert_company/', views.enter_company),
+    path('insert_type/', views.enter_type),
+    path('insert_game/', views.enter_game),
 ]

@@ -1,0 +1,36 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">UPDATE COMPANY</h1>
+    </div>
+
+    <br>
+
+    <form method="post" action="/update_company/{{c.company_id}}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Company Name </td>
+                <td>
+                    <input type="text" name="company_name" id="company_name" value="{{c.company_name}}">
+                </td>
+            </tr>
+            <tr>
+                <td>Company Description</td>
+                <td>
+                    <input type="text" name="company_description" id="company_description" value="{{c.company_name}}">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">SUBMIT</button>
+    </form>
+
+</div>
+
+{% endblock %}

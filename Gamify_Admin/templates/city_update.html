@@ -1,0 +1,30 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">UPDATE CITY</h1>
+    </div>
+
+    <br>
+
+    <form method="post" action="/update_city/{{c.city_id}}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>City Name </td>
+                <td>
+                    <input type="text" name="city_name" id="city_name" value="{{c.city_name}}">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">SUBMIT</button>
+    </form>
+
+</div>
+
+{% endblock %}

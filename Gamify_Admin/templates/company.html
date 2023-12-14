@@ -1,0 +1,39 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">COMPANY</h1>
+        <button class="view">View All</button>
+        <a href="/insert_company/"><button class="view">Insert</button></a>
+    </div>
+
+    <div class="report-body">
+        <div class="report-topic-heading">
+            <h3 class="t-op">Company ID</h3>
+            <h3 class="t-op">Company Name</h3>
+            <h3 class="t-op">Company Description</h3>
+            <h3 class="t-op">Action</h3>
+        </div>
+
+        <div class="items">
+
+
+           {% for c in company %}
+            <div class="item1">
+                <h3 class="t-op-nextlvl">{{c.company_id}}</h3>
+                <h3 class="t-op-nextlvl">{{c.company_name}}</h3>
+                <h3 class="t-op-nextlvl">{{c.company_description}}</h3>
+                <h3 class="t-op-nextlvl">
+                    <a href="/delete_company/{{c.company_id}}"><i class="fa-solid fa-trash fa-lg"></i></a> /
+                    <a href="/update_company/{{c.company_id}}"><i class="fa-solid fa-arrows-rotate fa-lg"></i></a>
+                </h3>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
