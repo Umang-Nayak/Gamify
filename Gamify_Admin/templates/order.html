@@ -1,0 +1,43 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">Order</h1>
+        <button class="view">View All</button>
+    </div>
+
+    <div class="report-body">
+        <table class="report-table">
+    <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>User</th>
+            <th>Order Date</th>
+            <th>Order Status</th>
+            <th>Order Payment Status</th>
+            <th>Order Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for o in order %}
+            <tr>
+                <td>{{o.order_id}}</td>
+                <td>{{o.user_id.user_first_name}}</td>
+                <td>{{o.order_date}}</td>
+                <td>{{o.order_status}}</td>
+                <td>{{o.order_payment_status}}</td>
+                <td>{{o.order_amount}}</td>
+                <td>
+                    <a href="/delete_cart/{{o.order_id}}"><i class="fa-solid fa-trash fa-lg"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% endblock %}

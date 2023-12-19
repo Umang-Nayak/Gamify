@@ -1,0 +1,39 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">WISHLIST</h1>
+        <button class="view">View All</button>
+    </div>
+
+    <div class="report-body">
+       <table class="report-table">
+    <thead>
+        <tr>
+            <th>Wishlist ID</th>
+            <th>User Name</th>
+            <th>Game Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for w in wishlist %}
+            <tr>
+                <td>{{w.wishlist_id}}</td>
+                <td>{{w.user_id.user_first_name}}</td>
+                <td>{{w.game_id.game_name}}</td>
+                <td>
+                    <a href="/delete_wishlist/{{w.wishlist_id}}"><i class="fa-solid fa-trash fa-lg"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+</div>
+
+
+{% endblock %}

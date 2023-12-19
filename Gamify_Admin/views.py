@@ -2,9 +2,10 @@ import sys
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from Gamify import settings
-from Gamify_Admin.forms import GamifyUserForm, CityForm, CompanyForm, GameForm, TypeForm
-from Gamify_Admin.models import City, GamifyUser, Company, Type, Game
+from Gamify_Admin.forms import GamifyUserForm, CityForm, CompanyForm, TypeForm, GameForm
+from Gamify_Admin.models import City, GamifyUser, Company, Type, Game, Wishlist, Feedback, Cart, OrderDetail, Order
 from django.contrib import messages
+from datetime import date
 import random
 import re
 
@@ -36,7 +37,7 @@ def login_user(request):
         val = GamifyUser.objects.filter(user_email=email, user_password=password, is_admin=1).count()
         print("-------------------", email, "---------------------", password)
         if val == 1:
-            return redirect('/city/')
+            return redirect('/dashboard/')
         else:
             messages.error(request, "Invalid Username or Password !!!")
             return redirect('/admin_register/')
@@ -135,6 +136,43 @@ def show_type(request):
 def show_game(request):
     game = Game.objects.all()
     return render(request, "game.html", {"game":game})
+
+def show_wishlist(request):
+    wishlist = Wishlist.objects.all()
+    return render(request, "wishlist.html", {"wishlist":wishlist})
+
+def show_feedback(request):
+    feedback = Feedback.objects.all()
+    return render(request, "feedback.html", {"feedback":feedback})
+
+def show_cart(request):
+    cart = Cart.objects.all()
+    return render(request, "cart.html", {"cart":cart})
+
+def show_order_detail(request):
+    order_detail = OrderDetail.objects.all()
+    return render(request, "order_detail.html", {"order_detail":order_detail})
+
+def show_order(request):
+    order = Order.objects.all()
+    return render(request, "order.html", {"order":order})
+
+def show_dashboard(request):
+    order = Order.objects.filter(order_date = date.today())
+    total_city = City.objects.all().count()
+    total_user = GamifyUser.objects.all().count()
+    total_company = Company.objects.all().count()
+    total_game = Game.objects.all().count()
+    total_type = Type.objects.all().count()
+    total_order = Order.objects.all().count()
+    total_feedback = Feedback.objects.all().count()
+    total_wishlist = Wishlist.objects.all().count()
+    return render(request, "dashboard.html",
+                  {"city":total_city, "user":total_user,
+                   "games":total_game,"company":total_company,
+                   "type":total_type, "feedback":total_feedback,
+                   "order":total_order,"wishlist":total_wishlist,
+                   "o":order})
 
 
 
@@ -283,6 +321,10 @@ def change_game(request, id):
     company = Company.objects.all()
     type_game = Type.objects.all()
     g = Game.objects.get(game_id=id)
+    year = g.game_launch_date.year
+    month = g.game_launch_date.month
+    day = g.game_launch_date.day
+    date = f"{year}-{month}-{day}"
     form = GameForm(request.POST, instance=g)
     if form.is_valid():
         availability = request.POST.get('availability')  # Assuming 'availability' is the name attribute in your form
@@ -293,7 +335,7 @@ def change_game(request, id):
             g.available = True  # Set to Available
         form.save()
         return redirect("/game")
-    return render(request, 'game_update.html', {'g': g,'company':company,'type':type_game})
+    return render(request, 'game_update.html', {'g': g,'company':company,'type':type_game, 'date':date})
 
 
 def change_type(request, id):
@@ -303,3 +345,7 @@ def change_type(request, id):
         form.save()
         return redirect("/type")
     return render(request, 'type_update.html', {'t': t})
+
+def show_profile(request):
+    user = GamifyUser.objects.all()
+    return render(request,"profile.html",{'user':user})

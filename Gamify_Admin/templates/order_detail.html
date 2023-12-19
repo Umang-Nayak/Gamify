@@ -1,0 +1,37 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">Order Details</h1>
+        <button class="view">View All</button>
+    </div>
+
+    <div class="report-body">
+        <table class="report-table">
+    <thead>
+        <tr>
+            <th>Detail Id</th>
+            <th>Game Name</th>
+            <th>Order Id</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for o in order_detail %}
+            <tr>
+                <td>{{o.orderdetail_id}}</td>
+                <td>{{o.game_id.game_name}}</td>
+                <td>{{o.order_id.order_id}}</td>
+                <td>{{o.orderdetail_quantity}}</td>
+                <td>{{o.orderdetail_amount}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% endblock %}

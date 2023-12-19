@@ -1,0 +1,89 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="profile-container">
+        <div class="profile-header">
+            {% for user in user %}
+            <h1>User Profile</h1>
+            <h3><a href="/update_profile/{{user_id}}"><i class="fa-solid fa-arrows-rotate fa-lg"></i></a></h3>
+            {% endfor %}
+        </div>
+
+        <div class="profile-content">
+            <table class="profile-table">
+                {% for user in user %}
+                <tr>
+                    <th>User ID</th>
+                    <td>{{ user.user_id }}</td>
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <td>{{ user.user_first_name }}</td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td>{{ user.user_last_name }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td>{{ user.user_date_of_birth }}</td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td>{{ user.user_contact }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.user_email }}</td>
+                </tr>
+                <tr>
+                    <th>User Type</th>
+                    {% if user.is_admin == 1 %}
+                    <td>ADMIN</td>
+                    {% else %}
+                    <td>CUSTOMER</td>
+                    {% endif %}
+
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ user.city_id.city_name }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+    <form method="post" action="/change_password/">
+        {% csrf_token %}
+        <div class="profile-container">
+        <div class="profile-header">
+            <h1>Update User Password</h1>
+        </div>
+
+        <div class="profile-content">
+            <table class="profile-table">
+                <tr>
+                    <th>Old Password</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>New Password</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Confirm Password</th>
+                    <td></td>
+                </tr>
+
+            </table>
+            <div style="text-align: center;padding:10px;">
+                <input type="submit" value="Submit" style="width: 150px; height: 40px; font-size: 16px; background-color: #3498db; color: white; border: none; border-radius: 5px;">
+            </div>
+        </div>
+    </div>
+
+    </form>
+{% endblock %}

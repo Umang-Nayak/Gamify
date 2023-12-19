@@ -17,13 +17,20 @@ urlpatterns = [
     path('forgot_password_verification/', views.sendotp),
     path('otp_verification/', views.set_password),
 
-
     # Show Data
     path('city/', views.show_city),
     path('user/', views.show_user),
     path('company/', views.show_company),
     path('type/', views.show_type),
     path('game/', views.show_game),
+    path('wishlist/', views.show_wishlist),
+    path('order/', views.show_order),
+    path('order_detail/', views.show_order_detail),
+    path('feedback/', views.show_feedback),
+    path('cart/', views.show_cart),
+    path('dashboard/',views.show_dashboard),
+    path('profile/',views.show_profile),
+
 
 
     # Delete Data
@@ -32,7 +39,6 @@ urlpatterns = [
     path('delete_company/<int:id>', views.destroy_company),
     path('delete_type/<int:id>', views.destroy_type),
     path('delete_game/<int:id>', views.destroy_game),
-
 
     # Update Data
     path('update_city/<int:id>', views.change_city),

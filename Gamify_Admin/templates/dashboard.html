@@ -1,0 +1,109 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<div class="box-container">
+    <div class="box box1">
+        <div class="text">
+            <h2 class="topic-heading">{{city}}</h2>
+            <h2 class="topic">Total City</h2>
+        </div>
+
+        <i class="fa-solid fa-location-dot fa-2xl"></i></div>
+
+    <div class="box box2">
+        <div class="text">
+            <h2 class="topic-heading">{{user}}</h2>
+            <h2 class="topic">Total Users</h2>
+        </div>
+
+        <i class="fa-solid fa-user fa-2xl"></i>
+    </div>
+
+    <div class="box box3">
+        <div class="text">
+            <h2 class="topic-heading">{{company}}</h2>
+            <h2 class="topic">Total Companies</h2>
+        </div>
+
+        <i class="fa-solid fa-building fa-2xl"></i>
+    </div>
+
+    <div class="box box4">
+        <div class="text">
+            <h2 class="topic-heading">{{games}}</h2>
+            <h2 class="topic">Total Games</h2>
+        </div>
+        <i class="fa-solid fa-gamepad fa-2xl"></i>
+    </div>
+
+    <div class="box box5">
+        <div class="text">
+            <h2 class="topic-heading">{{order}}</h2>
+            <h2 class="topic">Total Orders</h2>
+        </div>
+        <i class="fa-solid fa-list-check fa-2xl"></i>
+    </div>
+
+    <div class="box box5">
+        <div class="text">
+            <h2 class="topic-heading">{{feedback}}</h2>
+            <h2 class="topic">Total Feedback</h2>
+        </div>
+        <i class="fa-solid fa-list-check fa-2xl"></i>
+    </div>
+
+    <div class="box box5">
+        <div class="text">
+            <h2 class="topic-heading">{{wishlist}}</h2>
+            <h2 class="topic">Total Wishlists</h2>
+        </div>
+        <i class="fa-solid fa-list-check fa-2xl"></i>
+    </div>
+
+    <div class="box box5">
+        <div class="text">
+            <h2 class="topic-heading">{{type}}</h2>
+            <h2 class="topic">Total Types of games</h2>
+        </div>
+        <i class="fa-solid fa-list-check fa-2xl"></i>
+    </div>
+</div>
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">Order</h1>
+        <button class="view">View All</button>
+    </div>
+
+    <div class="report-body">
+        <table class="report-table">
+    <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>Order Date</th>
+            <th>Order Status</th>
+            <th>Order Payment Status</th>
+            <th>Order Amount</th>
+            <th>User Id</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for o in orders %}
+            <tr>
+                <td>{{o.order_id}}</td>
+                <td>{{o.order_date}}</td>
+                <td>{{o.order_status}}</td>
+                <td>{{o.order_payment_status}}</td>
+                <td>{{o.order_amount}}</td>
+                <td>{{o.user_id.user_id}}</td>
+                <td>
+                    <a href="/delete_order/{{o.order_id}}"><i class="fa-solid fa-trash fa-lg"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

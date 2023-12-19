@@ -58,3 +58,59 @@ class Game(models.Model):
 
     class Meta:
         db_table = "Game"
+
+
+
+class Order(models.Model):
+    order_id = models.AutoField(primary_key=True)
+    order_date = models.DateField(null=False)
+    order_status = models.IntegerField(null=False)
+    order_payment_status = models.IntegerField(null=False)
+    order_amount = models.IntegerField(null=False)
+    user_id = models.ForeignKey(GamifyUser, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "order"
+
+
+class OrderDetail(models.Model):
+    orderdetail_id = models.AutoField(primary_key=True)
+    orderdetail_quantity = models.IntegerField(null=False)
+    orderdetail_amount = models.IntegerField(null=False)
+    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+    game_id = models.ForeignKey(Game, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "orderdetail"
+
+
+class Wishlist(models.Model):
+    wishlist_id = models.AutoField(primary_key=True)
+    game_id = models.ForeignKey(Game, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(GamifyUser, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "wishlist"
+
+
+class Feedback(models.Model):
+    feedback_id = models.AutoField(primary_key=True)
+    feedback_date = models.DateField()
+    feedback_des = models.CharField(max_length=500)
+    game_id = models.ForeignKey(Game, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(GamifyUser, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "feedback"
+
+
+class Cart(models.Model):
+    cart_id = models.AutoField(primary_key=True)
+    cart_quantity = models.IntegerField(null=False)
+    cart_amount = models.IntegerField(null=False)
+    cart_added_date = models.DateField(null=False)
+    user_id = models.ForeignKey(GamifyUser, on_delete=models.PROTECT)
+    game_id = models.ForeignKey(Game, on_delete=models.PROTECT)
+
+    class Meta:
+        db_table = "cart"

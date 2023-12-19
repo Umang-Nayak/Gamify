@@ -1,0 +1,43 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">Cart</h1>
+        <button class="view">View All</button>
+    </div>
+
+    <div class="report-body">
+        <table class="report-table">
+    <thead>
+        <tr>
+            <th>Cart ID</th>
+            <th>User Name</th>
+            <th>Game Name</th>
+            <th>Amount</th>
+            <th>Added Date</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in cart %}
+            <tr>
+                <td>{{c.cart_id}}</td>
+                <td>{{c.user_id.user_first_name}}</td>
+                <td>{{c.game_id.game_name}}</td>
+                <td>{{c.cart_amount}}</td>
+                <td>{{c.cart_added_date}}</td>
+                <td>{{c.cart_quantity}}</td>
+                <td>
+                    <a href="/delete_cart/{{c.cart_id}}"><i class="fa-solid fa-trash fa-lg"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% endblock %}

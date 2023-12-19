@@ -1,0 +1,37 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="recent-Articles">User Feedback</h1>
+        <button class="view">View All</button>
+    </div>
+
+    <div class="report-body">
+        <table class="report-table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <!-- <th>Feedback Id</th> -->
+            <th>Feedback Description</th>
+            <th>Feedback Date</th>
+            <th>Game Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f in feedback %}
+            <tr>
+                <td>{{f.user_id.user_first_name}}</td>
+                <!-- <td>{{f.feedback_id}}</td> -->
+                <td>{{f.feedback_des}}</td>
+                <td>{{f.feedback_date}}</td>
+                <td>{{f.game_id.game_name}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% endblock %}

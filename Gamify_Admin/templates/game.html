@@ -12,41 +12,51 @@
     <div class="items">
 
     <div class="report-body">
-        <div class="report-topic-heading">
-            <h3 class="t-op">ID</h3>
-            <h3 class="t-op">Name</h3>
-            <h3 class="t-op">Version</h3>
-            <h3 class="t-op">Image</h3>
-            <h3 class="t-op">Price</h3>
-            <h3 class="t-op">Launch date</h3>
-            <h3 class="t-op">Quantity</h3>
-            <h3 class="t-op">Description</h3>
-            <h3 class="t-op">Availability</h3>
-            <h3 class="t-op">Company Name</h3>
-            <h3 class="t-op">Type Name</h3>
-            <h3 class="t-op">Action</h3>
-        </div>
+        <table class="report-table"  width="1120px">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Version</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Launch_date</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Availability</th>
+                <th>Type name</th>
+                <th>Company name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+            <tbody>
+            {% for g in game %}
 
-           {% for g in game %}
-
-            <div class="item1">
-                <h3 class="t-op-nextlvl">{{g.game_id}}</h3>
-                <h3 class="t-op-nextlvl">{{g.game_name}}</h3>
-                <h3 class="t-op-nextlvl">{{g.game_version}}</h3>
-                <h3 class="t-op-nextlvl">{{g.game_image}}</h3>
-                <h3 class="t-op-nextlvl">{{g.game_price}}</h3>
-                <h3 class="t-op-nextlvl">{{g.game_launch_date}}</h3>
-                <h3 class="t-op-nextlvl">{{g.game_quantity}}</h3>
-                <h3 class="t-op-nextlvl">{{g.game_description}}</h3>
-                <h3 class="t-op-nextlvl">{{g.is_available}}</h3>
-                <h3 class="t-op-nextlvl">{{g.company_id.company_name}}</h3>
-                <h3 class="t-op-nextlvl">{{g.type_id.type_name}}</h3>
-                <h3 class="t-op-nextlvl">
+            <tr>
+                <td>{{g.game_id}}</td>
+                <td>{{g.game_name}}</td>
+                <td>{{g.game_version}}</td>
+                <td>{{g.game_image}}</td>
+                <td>{{g.game_price}}</td>
+                <td>{{g.game_launch_date}}</td>
+                <td>{{g.game_quantity}}</td>
+                <td>{{g.game_description}}</td>
+                <td>
+                    {% if g.is_available == 1 %}
+                    <b><span style="color:green;">YES</span></b>
+                    {% else %}
+                    <b><span style="color:red;">NO</span></b>
+                    {% endif %}
+                </td>
+                <td>{{g.company_id.company_name}}</td>
+                <td>{{g.type_id.type_name}}</td>
+                <td>
                     <a href="/delete_game/{{g.game_id}}"><i class="fa-solid fa-trash fa-lg"></i></a> /
                     <a href="/update_game/{{g.game_id}}"><i class="fa-solid fa-arrows-rotate fa-lg"></i></a>
-                </h3>
-            </div>
+                </td>
+            </tr>
             {% endfor %}
+            </tbody>
 
         </div>
     </div>

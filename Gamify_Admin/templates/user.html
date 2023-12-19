@@ -10,43 +10,45 @@
     </div>
 
     <div class="report-body">
-        <div class="report-topic-heading">
-            <h3 class="t-op">User ID</h3>
-            <h3 class="t-op">First Name</h3>
-            <h3 class="t-op">Last Name</h3>
-            <h3 class="t-op">D.O.B</h3>
-            <h3 class="t-op">Contact</h3>
-            <h3 class="t-op">Email</h3>
-            <h3 class="t-op">Password</h3>
-            <h3 class="t-op">is_admin</h3>
-            <h3 class="t-op">City</h3>
-            <h3 class="t-op">OTP</h3>
-            <h3 class="t-op">OTP Used</h3>
-            <h3 class="t-op">Action</h3>
-        </div>
-
-        <div class="items">
-
-
-           {% for u in user %}
-            <div class="item1">
-                <h3 class="t-op-nextlvl">{{u.user_id}}</h3>
-                <h3 class="t-op-nextlvl">{{u.user_first_name}}</h3>
-                <h3 class="t-op-nextlvl">{{u.user_last_name}}</h3>
-                <h3 class="t-op-nextlvl">{{u.user_date_of_birth}}</h3>
-                <h3 class="t-op-nextlvl">{{u.user_contact}}</h3>
-                <h3 class="t-op-nextlvl">{{u.user_email}}</h3>
-                <h3 class="t-op-nextlvl">{{u.user_password}}</h3>
-                <h3 class="t-op-nextlvl">{{u.is_admin}}</h3>
-                <h3 class="t-op-nextlvl">{{u.city_id.city_name}}</h3>
-                <h3 class="t-op-nextlvl">{{u.user_otp}}</h3>
-                <h3 class="t-op-nextlvl">{{u.user_otp_used}}</h3>
-                <h3 class="t-op-nextlvl">
+        <table class="report-table">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>D.O.B</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>is_admin</th>
+            <th>City</th>
+            <th>OTP</th>
+            <th>OTP Used</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in user %}
+            <tr>
+                <td>{{u.user_id}}</td>
+                <td>{{u.user_first_name}}</td>
+                <td>{{u.user_last_name}}</td>
+                <td>{{u.user_date_of_birth}}</td>
+                <td>{{u.user_contact}}</td>
+                <td>{{u.user_email}}</td>
+                <td>{{u.user_password}}</td>
+                <td>{{u.is_admin}}</td>
+                <td>{{u.city_id.city_name}}</td>
+                <td>{{u.user_otp}}</td>
+                <td>{{u.user_otp_used}}</td>
+                <td>
                     <a href="/delete_user/{{u.user_id}}"><i class="fa-solid fa-trash fa-lg"></i></a> /
                     <a href="/update_user/{{u.user_id}}"><i class="fa-solid fa-arrows-rotate fa-lg"></i></a>
-                </h3>
-            </div>
-            {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
         </div>
     </div>

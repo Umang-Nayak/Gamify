@@ -10,29 +10,30 @@
     </div>
 
     <div class="report-body">
-        <div class="report-topic-heading">
-            <h3 class="t-op">Company ID</h3>
-            <h3 class="t-op">Company Name</h3>
-            <h3 class="t-op">Company Description</h3>
-            <h3 class="t-op">Action</h3>
-        </div>
+        <table class="report-table">
+    <thead>
+        <tr>
+            <th>Company ID</th>
+            <th>Company Name</th>
+            <th>Company Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in company %}
+        <tr>
+            <td>{{c.company_id}}</td>
+            <td>{{c.company_name}}</td>
+            <td>{{c.company_description}}</td>
+            <td>
+                <a href="/delete_company/{{c.company_id}}"><i class="fa-solid fa-trash fa-lg"></i></a> /
+                <a href="/update_company/{{c.company_id}}"><i class="fa-solid fa-arrows-rotate fa-lg"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-        <div class="items">
-
-
-           {% for c in company %}
-            <div class="item1">
-                <h3 class="t-op-nextlvl">{{c.company_id}}</h3>
-                <h3 class="t-op-nextlvl">{{c.company_name}}</h3>
-                <h3 class="t-op-nextlvl">{{c.company_description}}</h3>
-                <h3 class="t-op-nextlvl">
-                    <a href="/delete_company/{{c.company_id}}"><i class="fa-solid fa-trash fa-lg"></i></a> /
-                    <a href="/update_company/{{c.company_id}}"><i class="fa-solid fa-arrows-rotate fa-lg"></i></a>
-                </h3>
-            </div>
-            {% endfor %}
-
-        </div>
     </div>
 </div>
 

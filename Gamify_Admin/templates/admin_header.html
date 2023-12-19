@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'BM/LOGO.svg' %}" type="image/x-icon">
     <title>Gamify</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'responsive.css' %}">
@@ -18,7 +19,9 @@
 <header>
 
     <div class="logosec">
-        <div class="logo">Gamify</div>
+        <div class="logo">
+            <img src="{% static 'BM/Gamify_Logo.svg' %}">
+        </div>
         <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
              class="icn menuicn"
              id="menuicn"
@@ -35,15 +38,12 @@
     </div>
 
     <div class="message">
-        <div class="circle"></div>
-        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png"
-             class="icn"
-             alt="">
-        <div class="dp">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png"
-                 class="dpicn"
-                 alt="dp">
-        </div>
+        <a href="/logout/">
+            <i class="fa-solid fa-right-from-bracket fa-2xl" style="color: #ff3399;"></i>
+        </a>
+        <a href="/profile/">
+            <i class="fa-solid fa-user fa-2xl" style="color: #00a2e9;"></i>
+        </a>
     </div>
 
 </header>
@@ -53,30 +53,84 @@
         <nav class="nav">
             <div class="nav-upper-options">
 
+                <a href="/dashboard" class="no-underline">
                 <div class="option2 nav-option">
-                    <i class="fa-solid fa-location-dot fa-lg"></i>
-                    <a href="/city"><button>CITY</button></a>
+                    <i class="fa-solid fa-tv fa-2xl"></i>
+                    Dashboard
                 </div>
+                </a>
 
+                <a href="/city" class="no-underline">
                 <div class="option2 nav-option">
-                    <i class="fas fa-user"></i>
-                    <a href="/user"><button>USER</button></a>
+                    <i class="fa-solid fa-location-dot fa-2xl"></i>
+                    CITY
                 </div>
+                </a>
 
+                <a href="/user" class="no-underline">
+                <div class="option2 nav-option">
+                    <i class="fas fa-user fa-2xl"></i>
+                    USER
+                </div>
+                </a>
+
+                <a href="/company" class="no-underline">
                 <div class="nav-option option3">
-                    <i class="fa-solid fa-building fa-lg"></i>
-                    <a href="/company"><button>COMPANY</button></a>
+                    <i class="fa-solid fa-building fa-2xl"></i>
+                    COMPANY
                 </div>
+                </a>
 
+                <a href="/type" class="no-underline">
                 <div class="nav-option option4">
-                    <i class="fa-solid fa-dice-d6 fa-lg"></i>
-                    <a href="/type"><button>TYPE</button></a>
+                    <i class="fa-solid fa-dice-d6 fa-2xl"></i>
+                    TYPE
                 </div>
+                </a>
 
+                <a href="/game" class="no-underline">
                 <div class="nav-option option5">
-                    <i class="fa-solid fa-gamepad fa-lg"></i>
-                    <a href="/game"><button>GAME</button></a>
+                    <i class="fa-solid fa-gamepad fa-2xl"></i>
+                    GAME
                 </div>
+                </a>
+
+                <a href="/wishlist" class="no-underline">
+                <div class="nav-option option5">
+                    <i class="fa-solid fa-heart fa-2xl"></i>
+                    Wishlist
+                </div>
+                </a>
+
+                <a href="/order" class="no-underline">
+                <div class="nav-option option5">
+                    <i class="fa-solid fa-truck-fast fa-2xl"></i>
+                    Order
+                </div>
+                </a>
+
+                <a href="/order_detail" class="no-underline">
+                <div class="nav-option option5">
+                    <i class="fa-solid fa-calendar-day fa-2xl"></i>
+                    Order Detail
+                </div>
+                </a>
+
+                <a href="/feedback" class="no-underline">
+                <div class="nav-option option5">
+                    <i class="fa-solid fa-comments fa-2xl"></i>
+                    Feedback
+                </div>
+                </a>
+
+                <a href="/cart" class="no-underline">
+                <div class="nav-option option5">
+                    <i class="fa-solid fa-cart-shopping fa-2xl "></i>
+                    Cart
+                </div>
+                </a>
+
+
 
             </div>
         </nav>
@@ -92,47 +146,9 @@
             </div>
         </div>
 
-<!--        <div class="box-container">-->
-<!--            <div class="box box1">-->
-<!--                <div class="text">-->
-<!--                    <h2 class="topic-heading">60.5k</h2>-->
-<!--                    <h2 class="topic">Article Views</h2>-->
-<!--                </div>-->
-
-<!--                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png"-->
-<!--                     alt="Views">-->
-<!--            </div>-->
-
-<!--            <div class="box box2">-->
-<!--                <div class="text">-->
-<!--                    <h2 class="topic-heading">150</h2>-->
-<!--                    <h2 class="topic">Likes</h2>-->
-<!--                </div>-->
-
-<!--                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png"-->
-<!--                     alt="likes">-->
-<!--            </div>-->
-
-<!--            <div class="box box3">-->
-<!--                <div class="text">-->
-<!--                    <h2 class="topic-heading">320</h2>-->
-<!--                    <h2 class="topic">Comments</h2>-->
-<!--                </div>-->
-
-<!--                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"-->
-<!--                     alt="comments">-->
-<!--            </div>-->
-
-<!--            <div class="box box4">-->
-<!--                <div class="text">-->
-<!--                    <h2 class="topic-heading">70</h2>-->
-<!--                    <h2 class="topic">Published</h2>-->
-<!--                </div>-->
-<!--                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">-->
-<!--            </div>-->
-<!--        </div>-->
-
         {% block content %}
+
+
 
         {% endblock %}
 
