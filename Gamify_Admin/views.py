@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from Gamify import settings
 from Gamify_Admin.forms import GamifyUserForm, CityForm, CompanyForm, TypeForm, GameForm
+from Gamify_Admin.functions import handle_uploaded_file
 from Gamify_Admin.models import City, GamifyUser, Company, Type, Game, Wishlist, Feedback, Cart, OrderDetail, Order
 from django.contrib import messages
 from datetime import date
@@ -274,6 +275,49 @@ def enter_game(request):
     else:
         form = Game()
     return render(request, 'game_insert.html', {'form': form,'g':g,'company':company,'type':type_game})
+
+
+def insert_Book(request):
+    company = Company.objects.all()
+    type_game = Type.objects.all()
+    g = Game.objects.all()
+
+    if request.method == "POST":
+        form = GameForm(request.POST, request.FILES)
+        print(f"\nFORM ERROR = {form.errors}")
+
+        if form.is_valid():
+            try:
+                handle_uploaded_file(request.FILES['game_image'])
+                form.save()
+                return redirect('/game/')
+
+            except Exception as e:
+                print(f"\nSYSTEM ERROR = {sys.exc_info()}")
+                print(f"\nEXCEPTION ERROR = {e}")
+
+    else:
+        form = Game()
+
+    return render(request, 'game_insert.html',
+                  {'form': form,'g':g,'company':company,'type':type_game})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def enter_type(request):
